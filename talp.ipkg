@@ -1,0 +1,7 @@
+package talp
+
+main = Talp.Main
+
+sourcedir = "src"
+
+executable = "talp"
