@@ -2,6 +2,7 @@ module Talp.Main
 
 import Parser.Parser
 import Chapter1.Parser as Ch1
+import Chapter1.Lang
 
 import Data.List
 import System.File

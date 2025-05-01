@@ -1,1 +1,6 @@
+if true then false else if true then false else true
 true
+false
+pred 0
+succ 0
+isZero 0

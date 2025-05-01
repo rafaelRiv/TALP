@@ -5,14 +5,12 @@ import public Librairies.Lexer
 public export
 data Token =
   Comment String |
-  IntegerLit Int |
   Ident String |
   Symbol String
 
 export
 Show Token where
   show (Comment a) = "Comment " ++ show a
-  show (IntegerLit a) = "Integer " ++ show a
   show (Ident a) = "Ident " ++ show a
   show (Symbol a) = "Symbol " ++ show a
 
@@ -25,12 +23,11 @@ symbol : Recogniser
 symbol = oneOf $ fastUnpack "=>:()*+-/" 
 
 ident : Recogniser
-ident = pred isAlpha <+> many (pred isAlpha)
+ident = pred isAlphaNum <+> many (pred isAlpha)
 
 tokenmaps : TokenMap Token
 tokenmaps = [
   (space, \str => Comment str),
-  (integerLit, \str => IntegerLit $ cast str),
   (symbol, \str => Symbol str),
   (ident, \str => Ident str)
 ]
