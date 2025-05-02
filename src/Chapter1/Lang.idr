@@ -18,5 +18,5 @@ Show Arith where
   show AZero = "zero"
   show (ASucc t) = "succ " ++ show t
   show (APred t) = "pred " ++ show t
-  show (AIsZero t) = "isZero " ++ show t 
+  show (AIsZero t) = "isZero " ++ show t
   

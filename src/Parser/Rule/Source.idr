@@ -34,6 +34,14 @@ ident =
                   Ident i => Just i
                   _ => Nothing)
 
+export
+eof : Rule ()
+eof = 
+    terminal 
+      ("Expect end of file")
+      (\tok => case tok.tok of 
+                  EOF => Just ()
+                  _ => Nothing)
       
 
 

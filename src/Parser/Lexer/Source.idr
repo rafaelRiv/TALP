@@ -6,13 +6,15 @@ public export
 data Token =
   Comment String |
   Ident String |
-  Symbol String
+  Symbol String |
+  EOF
 
 export
 Show Token where
   show (Comment a) = "Comment " ++ show a
   show (Ident a) = "Ident " ++ show a
   show (Symbol a) = "Symbol " ++ show a
+  show EOF = "EOF"
 
 integerLit : Recogniser
 integerLit = pred isDigit <+> many (pred isDigit)
@@ -38,5 +40,5 @@ notComment _ = True
 
 export
 lex : String -> List (TokenData Token)
-lex str =  filter (notComment . tok) (lex str tokenmaps)
+lex str =  (filter (notComment . tok) (lex str tokenmaps)) ++ [MkTokenData 0 0 0 0 EOF]
 
