@@ -52,7 +52,7 @@ export
 prog : Rule (List Arith)
 prog = do
   exp <- t
-  next <- prog <|> pure []
+  next <- prog <|> (eof <&> const [])
   pure (exp::next)
 
 
